@@ -1,0 +1,12 @@
+<div class="card mb-3">
+  {% if item.cover_image %}
+    <img src="{{item.cover_image.url}}" alt="Card image">
+  {% endif %}
+  <div class="card-body">
+    <p class="card-text">{{item.title}}</p>
+  </div>        
+  <div class="card-body">
+    <span>{{item.price}} TL</span>
+    <a href="{% url "shopping_cart_item_add" item.pk %}" class="card-link float-right">Sepete Ekle</a>
+  </div>       
+</div>

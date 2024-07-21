@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="conteiner-fluid mt-5">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                {% for item in shopping_cart_item.items.all %}
+                  <div class="col-md-4 ">
+                    <div class="conteiner-fluid mt-5">
+                        <img src="{{item.product.cover_image.url}}" class="card-img" alt="...">
+                    </div>                  
+                  </div>                 
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.product.title}}</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted">{{item.updated_at}}</small></p>
+                    </div>
+                    <hr>
+                  </div>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+            <div class="col md-3">
+                <div class="card border-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Sepet Toplamı:</div>
+                        <div class="card-body text-black">
+                            {% for items in shopping_cart_item.items.all %}
+                                <h5 class="card-title">{{items.product.title}}</h5>
+                            {% endfor %}
+                            <hr>           
+                            <h5 class="card-text">Toplam Tutar:{{shopping_cart_item.total_price}}</h5>
+                        </div>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}
